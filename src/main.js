@@ -6,6 +6,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
 import '@/styles/index.scss' // global css
 
 import App from './App'
@@ -15,6 +18,8 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+import { TcPlayer } from '../public/TcPlayer-module-2.4.5'
+Vue.prototype.TcPlayer = TcPlayer
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -41,3 +46,5 @@ new Vue({
   store,
   render: h => h(App)
 })
+
+

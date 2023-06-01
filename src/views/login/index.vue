@@ -43,17 +43,17 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: any</span>
-      </div>
+<!--      <div class="tips">-->
+<!--        <span style="margin-right:20px;">username: admin</span>-->
+<!--        <span> password: 20230417</span>-->
+<!--      </div>-->
 
     </el-form>
   </div>
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
+import { validPassWord, validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
@@ -66,8 +66,8 @@ export default {
       }
     }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
+      if (!validPassWord(value)) {
+        callback(new Error('The user name and password are incorrect'))
       } else {
         callback()
       }
@@ -75,7 +75,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: '20230417'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
